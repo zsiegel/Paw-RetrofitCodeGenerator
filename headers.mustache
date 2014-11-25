@@ -1,0 +1,17 @@
+{{#headers.hasHeaders}}
+{{#combine}}
+@Header({
+{{/combine}}
+{{^combine}}
+@Header(
+{{/combine}}
+{{#headers.list}}
+"{{{name}}} : {{{value}}}"
+{{/headers.list}}
+{{#combine}}
+})
+{{/combine}}
+{{^combine}}
+)
+{{/combine}}
+{{/headers.hasHeaders}}
