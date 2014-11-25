@@ -35,11 +35,12 @@ var RetrofitCodeGenerator = function() {
         var queryParams = URI(request.url).search(true);
         for (name in queryParams) {
             var value = queryParams[name];
-            result.list.push({
+            result.push({
                 "name": name,
                 "value": value
             });
         }
+        return result;
     }
 
     this.generate = function(context) {
@@ -53,7 +54,8 @@ var RetrofitCodeGenerator = function() {
             "request":request,
             "path":path,
             "headers":this.renderHeader(headers),
-            "method":request.method
+            "method":request.method,
+            "params":this.params(request)
         };
 
         // import the mustache template
